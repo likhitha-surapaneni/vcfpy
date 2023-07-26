@@ -582,15 +582,10 @@ class ContigHeaderLine(SimpleHeaderLine):
         # convert 'length' entry to integer if possible
         if "length" in self.mapping:
             mapping["length"] = int(mapping["length"])
-        else:
-            warnings.warn(
-                'Field "length" not found in header line {}={}'.format(key, value),
-                FieldInfoNotFound,
-            )
         #: name of the contig
         self.id = self.mapping["ID"]
         #: length of the contig, ``None`` if missing
-        self.length = self.mapping.get("length")
+        self.length = self.mapping.get("length") if "length" in self.mapping
 
     def __hash__(self):
         raise TypeError("Unhashable type: ContigHeaderLine")
