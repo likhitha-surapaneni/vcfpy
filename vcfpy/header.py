@@ -585,7 +585,8 @@ class ContigHeaderLine(SimpleHeaderLine):
         #: name of the contig
         self.id = self.mapping["ID"]
         #: length of the contig, ``None`` if missing
-        self.length = self.mapping.get("length") if "length" in self.mapping else self.length = None
+	if  "length" in self.mapping:        
+            self.length = self.mapping.get("length")
 
     def __hash__(self):
         raise TypeError("Unhashable type: ContigHeaderLine")
