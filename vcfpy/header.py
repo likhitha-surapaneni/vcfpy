@@ -585,7 +585,7 @@ class ContigHeaderLine(SimpleHeaderLine):
         #: name of the contig
         self.id = self.mapping["ID"]
         #: length of the contig, ``None`` if missing
-	if  "length" in self.mapping:        
+        if  "length" in self.mapping:        
             self.length = self.mapping.get("length")
 
     def __hash__(self):
