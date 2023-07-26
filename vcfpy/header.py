@@ -353,7 +353,10 @@ class Header:
     def get_lines(self, key):
         """Return header lines having the given ``key`` as their type"""
         if key in self._indices:
-            return self._indices[key].values()
+            if isinstance(self._indices[key], dict):
+                return self._indices[key].values()
+            else:
+                return self._indices[key]
         else:
             return []
 
