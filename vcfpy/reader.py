@@ -87,6 +87,8 @@ class Reader:
             f = gzip.open(path, "rt")
             if not tabix_path:
                 tabix_path = path + ".tbi"
+                if not os.path.exists(tabix_path):	
+                    tabix_path = path + ".csi"
                 if not os.path.exists(tabix_path):
                     tabix_path = None  # guessing path failed
         else:
